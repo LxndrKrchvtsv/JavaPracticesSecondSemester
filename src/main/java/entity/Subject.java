@@ -1,6 +1,6 @@
 package entity;
 
-public class Subject extends Material {
+public class Subject {
     private String name;
     private Material material;
     private double volume;
