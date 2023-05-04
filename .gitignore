@@ -5,7 +5,6 @@ target/
 
 pom.xml
 
-src/test
 src/main/resources
 
 ### IntelliJ IDEA ###
