@@ -1,26 +1,27 @@
 package entity;
 
 public class Material {
-    private String name;
-    private double density;
+    private final String NAME;
+    private final double DENSITY;
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public double getDensity() {
-        return density;
+        return DENSITY;
     }
 
     public Material() {
+        this(null, 0.0);
     }
 
     public Material(String name, double density) {
-        this.name = name;
-        this.density = density;
+        this.NAME = name;
+        this.DENSITY = density;
     }
 
     public String toString() {
-        return name + "; " + density;
+        return NAME + "; " + NAME;
     }
 }

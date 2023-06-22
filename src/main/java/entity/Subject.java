@@ -42,6 +42,6 @@ public class Subject {
     }
 
     public String toString() {
-        return name + "; " + material.getDensity() + "; " + volume + "; " + getMass();
+        return name + "; " + material + "; " + volume + "; " + getMass();
     }
 }

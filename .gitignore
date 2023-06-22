@@ -8,6 +8,8 @@ pom.xml
 src/test
 src/main/resources
 
+out/
+
 ### IntelliJ IDEA ###
 .idea/*
 .idea/
