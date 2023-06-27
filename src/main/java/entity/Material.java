@@ -1,15 +1,15 @@
 package entity;
 
 public class Material {
-    private final String NAME;
-    private final double DENSITY;
+    private final String name;
+    private final double density;
 
     public String getName() {
-        return NAME;
+        return name;
     }
 
     public double getDensity() {
-        return DENSITY;
+        return density;
     }
 
     public Material() {
@@ -17,11 +17,11 @@ public class Material {
     }
 
     public Material(String name, double density) {
-        this.NAME = name;
-        this.DENSITY = density;
+        this.name = name;
+        this.density = density;
     }
 
     public String toString() {
-        return NAME + "; " + NAME;
+        return name + "; " + name;
     }
 }

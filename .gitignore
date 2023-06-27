@@ -11,9 +11,9 @@ src/main/resources
 out/
 
 ### IntelliJ IDEA ###
-.idea/*
-.idea/
 .idea
+.idea/
+.idea/*
 .idea/workspace.xml
 .idea/modules.xml
 .idea/jarRepositories.xml
