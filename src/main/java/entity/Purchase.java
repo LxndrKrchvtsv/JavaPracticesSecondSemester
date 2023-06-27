@@ -1,28 +1,26 @@
 package entity;
 
 public class Purchase implements Comparable<Purchase> {
-    private String productName;
-    private int price;
+    public static final String NAME = "Lemon";
+    public static final int PRICE = 317;
     private int amountPurchaseUnits;
     private int discountPercent;
     private WeekDays weekDay;
 
-    public Purchase() {};
+    public Purchase() {
+        this( 0, 0, 0);
+    };
 
-    public Purchase(String productName, int price, int amountPurchaseUnits, int discountPercent, WeekDays weekDay) {
-        this.productName = productName;
-        this.price = price;
+    public Purchase(int amountPurchaseUnits, int discountPercent, WeekDays weekDay) {
         this.amountPurchaseUnits = amountPurchaseUnits;
         this.discountPercent = discountPercent;
         this.weekDay = weekDay;
     };
 
-    public String getProductName() {
-        return productName;
-    };
-
-    public int getPrice() {
-        return price;
+    public Purchase(int amountPurchaseUnits, int discountPercent, int weekDay) {
+        this.amountPurchaseUnits = amountPurchaseUnits;
+        this.discountPercent = discountPercent;
+        this.weekDay = WeekDays.values()[weekDay];
     };
 
     public int getAmountPurchaseUnits() {
@@ -35,14 +33,6 @@ public class Purchase implements Comparable<Purchase> {
 
     public WeekDays getWeekDay() {
         return weekDay;
-    };
-
-    public void setProductName(String productName) {
-         this.productName = productName;
-    };
-
-    public void setPrice(int  price) {
-         this.price = price;
     };
 
     public void setAmountPurchaseUnits(int amountPurchaseUnits) {
@@ -58,11 +48,12 @@ public class Purchase implements Comparable<Purchase> {
     };
 
     public int getCost() {
-        return price * amountPurchaseUnits * (100 - discountPercent) / 100;
+        double cost = PRICE * amountPurchaseUnits * (100 - discountPercent) / 100;
+        return (int) Math.round(cost / 100) * 100;
     };
 
     public String toString() {
-        return productName + "; " + price + "; " + amountPurchaseUnits + "; " + discountPercent + "; " + getCost();
+        return NAME + "; " + PRICE + "; " + amountPurchaseUnits + "; " + discountPercent + "; " + getCost();
     }
 
     public int compareTo(Purchase purchase) {

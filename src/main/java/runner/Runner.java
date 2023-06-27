@@ -11,25 +11,25 @@ import java.util.Scanner;
 import java.util.stream.Stream;
 
 public class Runner {
-    static double getTotalCost(Purchase[] purchases) {
-        return Arrays.stream(purchases).mapToDouble(Purchase::getPrice).sum();
+    static private double getTotalCost(Purchase[] purchases) {
+        return Arrays.stream(purchases).mapToDouble(purchase -> purchase.PRICE).sum();
     };
 
-    static double getTotalCost(Stream<Purchase> purchases) {
-        return purchases.mapToDouble(Purchase::getPrice).sum();
+    static private double getTotalCost(Stream<Purchase> purchases) {
+        return purchases.mapToDouble(purchase -> purchase.PRICE).sum();
     };
 
     static double getAverageCost(Purchase[] purchases, int PURCHASES_NUMBER) {
         return getTotalCost(purchases) / PURCHASES_NUMBER;
     };
 
-    static WeekDays getDayWithMaxCostPurchase(Purchase[] purchases) {
+    static private WeekDays getDayWithMaxCostPurchase(Purchase[] purchases) {
         return Arrays.stream(purchases).max(Purchase::compareTo).get().getWeekDay();
     }
 
-    static void printArrayWithFormat(Purchase[] purchases) {
+    static private void printArrayWithFormat(Purchase[] purchases) {
         System.out.println("class constants");
-        Arrays.stream(purchases).forEach(System.out::println);
+        Arrays.stream(purchases).forEach(purchase -> System.out.println(purchase.NAME + ": " + purchase.PRICE + ";"));
     }
 
     static Purchase[] initPurchasesArray(int PURCHASES_NUMBER, Scanner purchasesReader) {
@@ -41,8 +41,6 @@ public class Runner {
                 String[] separatedLine = data.split(" ");
 
                 Purchase purchase = new Purchase(
-                        separatedLine[0],
-                        Integer.parseInt(separatedLine[1]),
                         Integer.parseInt(separatedLine[2]),
                         Integer.parseInt(separatedLine[3]),
                         WeekDays.values()[Integer.parseInt(separatedLine[4])]
@@ -70,6 +68,7 @@ public class Runner {
             printArrayWithFormat(purchases);
 
             String averageCost = String.format(Locale.US, "%.3f", getAverageCost(purchases, PURCHASES_NUMBER));
+
             System.out.println("averageCost:" + averageCost);
 
             Stream<Purchase> mondaysPurchases = Arrays.stream(purchases).filter(purchase -> purchase.getWeekDay() == WeekDays.MONDAY);
@@ -85,7 +84,7 @@ public class Runner {
 
             printArrayWithFormat(purchases);
 
-            Purchase purchaseWith5Units = new Purchase("", 0, 5, 0, WeekDays.SUNDAY);
+            Purchase purchaseWith5Units = new Purchase( 5, 0, WeekDays.SUNDAY);
 
             int purchaseEqual5 = Arrays.binarySearch(purchases, purchaseWith5Units);
             System.out.println(purchaseEqual5);
